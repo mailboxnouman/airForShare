@@ -13,6 +13,31 @@ btn.addEventListener('click', () => {
 
 
 
+
+// const themeBtn = document.getElementById('theme-btn');
+// const themeMenu = document.getElementById('theme-menu');
+
+// themeBtn.addEventListener('click', () => {
+//     themeMenu.classList.toggle('show');
+// });
+
+// document.addEventListener('click', (event) => {
+//     if (!themeBtn.contains(event.target) && !themeMenu.contains(event.target)) {
+//         themeMenu.classList.remove('show');
+//     }
+// });
+
+
+// js for theme toggel
+// document.getElementById('theme1').addEventListener('click', function() {
+//     document.body.classList.toggle('dark-mode');
+//     document.getElementById('theme-menu').classList.toggle('dark-mode');
+// });
+
+
+
+
+
 function handleTextareaInput() {
     var textarea = document.getElementById('textData');
     var btnOne = document.getElementById('btnOne');
