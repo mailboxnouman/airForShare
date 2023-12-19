@@ -66,7 +66,7 @@
 
                 <div class="heading" id="heading">Text</div>
                 <div class="dropArea" id="dropArea" ondragover="allowDrop(event)" ondrop="drop(event)">
-                    <input type="file" id="fileInput" style="display: none" onchange="handleFiles(this.files)">
+                    <input type="file" id="fileInput" style="display: none" multiple onchange="handleFiles(this.files)">
                     <div class="dropAreaContent" id="dropAreaContent" >
                         <p>Drag and drop any file or <span class="browse" id="browse">    
                             Browse</span></p>

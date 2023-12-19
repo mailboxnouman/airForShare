@@ -321,6 +321,7 @@ footer{
 .blank75{
     display: none;
 }
+
 /* Header Section */
 .navbar {
     /* position: absolute; */
@@ -494,7 +495,7 @@ footer{
     animation-duration: .5s;
 }
 .bgWhite{
-    background-color: white;
+    background-color: white !important;
 }
 .flex li{
     padding: 10px 0;
@@ -513,6 +514,9 @@ footer{
 }
 
 /* Hamburger Menu */
+nav button{
+    display: block;
+}
 .hamburger {
     cursor: pointer;
     width: 24px;
@@ -521,6 +525,7 @@ footer{
     position: relative;
     border: none;
     z-index: 5;
+    background-color: #F4F4F4;
 }
 .hamburger-top,
 .hamburger-middle,
@@ -555,7 +560,7 @@ footer{
     transform: rotate(-45deg) translateY(6px) translate(-6px);
 }
 
-
+/* 
 
 .nav-links ul li {
     display: block;
@@ -582,10 +587,10 @@ footer{
 .nav-links ul {
     padding: 30px;
 }
-
+*/
 .list {
     display: none;
-}
+} 
 
 
 

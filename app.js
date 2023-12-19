@@ -244,6 +244,7 @@ function handleFiles(files) {
             output.appendChild(fileBlock);
         }
     }
+    
 }
 
 
