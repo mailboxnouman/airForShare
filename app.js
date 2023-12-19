@@ -18,6 +18,7 @@ function handleTextareaInput() {
     var btnOne = document.getElementById('btnOne');
     var btnTwo = document.getElementById('btnTwo');
     document.getElementById('btnOne').innerText = "Clear";
+    document.getElementById('btnTwo').innerText = "Save";
 
     if (localStorage.savedText == textarea.value && textarea.value != "") {
         btnOne.style.display = 'inline-block';
