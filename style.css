@@ -190,9 +190,10 @@ li:nth-of-type(5):hover{
 }
 
 textarea{
+    font-family: 'Roboto', sans-serif;
     width: 794px;
     font-size: 1.5rem;
-    letter-spacing: -.7px;
+    letter-spacing: .5px;
     color: #000;
     width: 100%;
     padding: 10px 0;
