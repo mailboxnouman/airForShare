@@ -79,7 +79,6 @@ nav button{
 
 .list {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
     font-size: 1rem;
 }
 
@@ -95,7 +94,7 @@ nav button{
 
 .list ul li a{
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 300;
     color: black;
 }
 
@@ -388,39 +387,10 @@ footer{
 .logo img{
     width: 90px;
 }
-
-.list {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
+.list ul li a{
     font-size: 1rem;
+    letter-spacing: -0.2px;
 }
-
-.list ul {
-    display: flex;
-    list-style-type: none;
-}
-
-.list ul li {
-    padding: 0 15px;
-    cursor: pointer;
-}
-
-.list ul li a,
-.frm a {
-    text-decoration: none;
-    font-weight: 400;
-    color: black;
-}
-
-li:nth-of-type(5){
-    font-weight: 700;
-    color: #638EFF;
-}
-li:nth-of-type(5):hover{
-    font-weight: 700;
-    color: #745dff;
-}
-
 /* Main App Section */
 
 .wrap{
@@ -578,7 +548,7 @@ nav button{
 
 .flex ul li a{
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 300;
     color: black;
 }
 
