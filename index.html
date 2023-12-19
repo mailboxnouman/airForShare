@@ -11,14 +11,14 @@
     <title>AirForShare</title>
 </head>
 
-<body>
+<body id="overFl" onload="handleTextareaInput()">
 
     <!-- NavBar -->
     <section class="container">
-        <div class="hidden">
+        <div class="hide">
 
-            <div class="nav-links" id="navlinks">
-                <div class="closeNav" onclick="hideMenu()"><i class="fa-solid fa-xmark fa-2xl"></i></div>
+            <div class="hidden" id="menu">
+                <img src="./logo.svg" style="margin-bottom: 50px; margin-top: 20px; width: 90px;" alt="">
                 <ul>
                     <li><a href=""></a>How it works </li>
                     <li><a href=""></a>Download</li>
@@ -34,9 +34,14 @@
             <div class="logo">
                 <img src="./logo.svg" width="120px" alt="">
             </div>
-            <div class="menu" onclick="showMenu()">
-                <i class="fa-solid fa-bars fa-xl"></i>
-            </div>
+            
+                <!-- <i class="fa-solid fa-bars fa-xl"></i> -->
+                <button id="menu-btn" class="hamburger">
+                    <span class="hamburger-top"></span>
+                    <span class="hamburger-middle"></span>
+                    <span class="hamburger-bottom"></span>
+                </button>
+            
             <div class="list">
                 <ul>
                     <li><a href=""></a>How it works </li>
@@ -68,11 +73,11 @@
                 </div>
                 <div class="mainContentSub" id="mainContentSub">
                     <form>
-                        <textarea id="textData" name="text" placeholder="Type Something..."></textarea>
+                        <textarea id="textData" name="text" placeholder="Type Something..." oninput="handleTextareaInput()"></textarea>
                         <br>
                         <div class="btn">
-                            <button id="btnOne" onclick="clearText()">Clear</button>
-                            <button id="btnTwo" onclick="filterLink()">Save</button>
+                            <button id="btnOne" onclick="displayAndStorage()">Clear</button>
+                            <button id="btnTwo" onclick="saveAndFilter()" disabled>Save</button>
                         </div>
                     </form>
                     <div class="links">

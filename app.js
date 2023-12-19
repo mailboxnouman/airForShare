@@ -1,18 +1,53 @@
-var navlinks = document.getElementById("navlinks");
-function showMenu() {
-    navlinks.style.marginRight = "-200px";
+const btn = document.getElementById('menu-btn')
+const nav = document.getElementById('menu')
+const overFl = document.getElementById('overFl')
 
-    // document.getElementById('shadow').className = "shadow"
-    // var body = document.getElementById("overFl");
-    // body.style.overflow = "hidden";
-}
-function hideMenu() {
-    navlinks.style.marginRight = "0px";
+btn.addEventListener('click', () => {
+    btn.classList.toggle('open')
+    btn.classList.toggle('bgWhite')
+    nav.classList.toggle('flex')
+    nav.classList.toggle('hidden')
+    overFl.classList.toggle('overFl')
+})
 
-    // document.getElementById('shadow').className = "navHide"
-    // var body = document.getElementById("overFl");
-    // body.style.overflow = "scroll";
+
+
+
+function handleTextareaInput() {
+    var textarea = document.getElementById('textData');
+    var btnOne = document.getElementById('btnOne');
+    var btnTwo = document.getElementById('btnTwo');
+    document.getElementById('btnOne').innerText = "Clear";
+
+    if (localStorage.savedText == textarea.value && textarea.value != "") {
+        btnOne.style.display = 'inline-block';
+        btnTwo.innerText = "Copy"
+        btnTwo.disabled = false;
+    }else if (localStorage.savedText != textarea.value && textarea.value != "") {
+        btnOne.style.display = 'inline-block';
+        btnTwo.innerText = "Save"
+        btnTwo.disabled = false;
+    }else if (textarea.value.trim() !== '') {
+        btnTwo.disabled = false;
+        btnOne.style.display = 'inline-block';
+    } else {
+        btnTwo.disabled = true;
+        btnOne.style.display = 'none';
+    }
 }
+
+function clearText() {
+    event.preventDefault()
+    document.getElementById('textData').value = '';
+    document.getElementById('btnOne').innerText = "Cleared";
+    setTimeout(function () {
+        handleTextareaInput()
+    }, 800);
+
+    ; // Call the function to update button states
+}
+
+
 function isValidURL(url) {
     var urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     return urlPattern.test(url);
@@ -38,8 +73,8 @@ function filterLink() {
         listItem.appendChild(anchorTag);
         document.getElementById('links').appendChild(listItem);
 
-        
-    } else if(linkValue == ""){
+
+    } else if (linkValue == "") {
         alert('Please write something to save.');
     }
 }
@@ -120,7 +155,7 @@ function showText() {
     heading.innerText = "Text"
     mainContentSub.style.display = "block"
     dropArea.style.display = "none"
-    
+
 }
 
 
@@ -138,14 +173,14 @@ function browseFiles() {
 function allowDrop(event) {
     event.preventDefault();
     var dropArea = document.getElementById('dropArea');
-    dropArea.style.border = '2px solid #638EFF'; 
+    dropArea.style.border = '2px solid #638EFF';
 }
 
 function drop(event) {
     event.preventDefault();
     var dropArea = document.getElementById('dropArea');
-    dropArea.style.border = 'none'; 
-     
+    dropArea.style.border = 'none';
+
     document.getElementById('dropAreaContent').addEventListener('click', function () {
         document.getElementById('fileInput').click();
     });
@@ -163,20 +198,31 @@ function drop(event) {
 //         output.innerHTML += '<p>File Name: ' + file.name + '<br>File Size: ' + file.size + ' bytes</p>';
 //     }
 // }
-    
+
 function handleFiles(files) {
     var output = document.getElementById('dropArea');
 
     var dropAreaContent = document.getElementById('dropAreaContent');
-    dropAreaContent.style.width = "100px";
-    dropAreaContent.style.height = "100px";
+    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    if (viewportWidth > 768) {
+        dropAreaContent.style.width = "100px";
+        dropAreaContent.style.height = "100px";
+
+    } else {
+        dropAreaContent.style.width = "80px";
+        dropAreaContent.style.height = "80px";
+
+    }
+
+
     dropAreaContent.style.border = "1px dashed rgb(192, 192, 192)";
     dropAreaContent.style.display = "flex";
     dropAreaContent.style.alignItems = "center";
     dropAreaContent.style.justifyContent = "center";
     dropAreaContent.innerText = "Add File";
     dropAreaContent.style.cursor = "pointer";
-    dropAreaContent.setAttribute('onclick', 'browseFiles()');
+    dropAreaContent.setAttribute('onclick', 'browseFiles()')
 
     output.style.justifyContent = "start";
     output.style.alignItems = "start";
@@ -188,6 +234,7 @@ function handleFiles(files) {
             var file = files[i];
             var fileBlock = createFileBlock(file);
             output.insertBefore(fileBlock, addFileContent);
+            dropArea.style.border = 'none';
         }
     } else {
         for (var i = 0; i < files.length; i++) {
@@ -197,6 +244,7 @@ function handleFiles(files) {
         }
     }
 }
+
 
 
 
@@ -220,9 +268,73 @@ function createFileBlock(file) {
 }
 
 
+function saveAndFilter() {
+    copyToClipboard()
+    saveText();
+    filterLink();
+    
+}
+
+function displayAndStorage() {
+    clearText();
+    clearStorageText();
+}
+
+document.getElementById('textData').value = localStorage.getItem('savedText') || '';
 
 
 
+
+
+function copyToClipboard() {
+    var textarea = document.getElementById('textData');
+    if (localStorage.savedText == textarea.value && textarea.value != "") {
+
+        textarea.select();
+        textarea.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+
+        window.getSelection().removeAllRanges();
+
+        btnTwo.innerText = "Copied"
+
+    }
+}
+
+function saveText() {
+    event.preventDefault()
+    var textarea = document.getElementById('textData');
+
+    var textToSave = document.getElementById('textData').value;
+
+    if (localStorage.savedText != textarea.value ) {
+
+
+    localStorage.setItem('savedText', textToSave);
+
+    document.getElementById('btnTwo').innerText = "Saving"
+    setTimeout(function () {
+        document.getElementById('btnTwo').innerText = "Copy";
+    }, 1000);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function clearStorageText() {
+    localStorage.removeItem('savedText');
+
+}
 
 
 

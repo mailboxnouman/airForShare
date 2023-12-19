@@ -11,7 +11,7 @@ body{
 }
 
 
-.hidden {
+.hidden,.hide {
     display: none;
 }
 .blank75{
@@ -239,16 +239,15 @@ form button:nth-of-type(2){
     font-style: italic;
     cursor: pointer;
 }
-form button:nth-of-type(2):hover{
-    width: 230px;
-    height: 60px;
+form button:nth-of-type(2):not([disabled]):hover{
     border: 2px solid #745dff;
     color: #745dff;
-    background-color: white;
-    font-size: 1.5rem;
-    font-weight: 800;
-    font-style: italic;
-    cursor: pointer;
+}
+
+form button[disabled]:nth-of-type(2) {
+    pointer-events: none;
+    border: 2px solid rgb(196, 196, 196);
+    cursor: not-allowed;
 }
 .links ul{
     margin-top: 20px;
@@ -312,7 +311,7 @@ footer{
     
 
 
-.hidden {
+.hidden,.hide {
     display: none;
 }
 .blank75{
@@ -473,29 +472,85 @@ footer{
 @media (max-width: 768px) {
 
 
-.hidden {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 25vh;
-    position: absolute;
-}
-
-
-
-.menu {
+.hide {
+    
     display: block;
+    
+}
+.flex{
+    position: absolute;
+    background-color: white;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    color: black;
+    font-size: 1rem;
+    animation-name: topToBottom;
+    animation-duration: .5s;
+}
+.bgWhite{
+    background-color: white;
+}
+.flex li{
+    padding: 10px 0;
+    margin: 10px 0;
     cursor: pointer;
 }
-.menu i{
-    color: #4A4A4A;
+.hidden{
+   display: none; 
 }
-.closeNav {
-    margin-left: 140px;
-    width: 70px;
-    padding: 20px;
+.overFl{
+    overflow: hidden;
+}
+@keyframes topToBottom {
+    from{margin-top: -500px;}
+    to{margin-top: 0;}
+}
+
+/* Hamburger Menu */
+.hamburger {
     cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: all 0.25s;
+    position: relative;
+    border: none;
+    z-index: 5;
 }
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    transform: rotate(0);
+    transition: all 0.5s;
+}
+.hamburger-middle{
+    transform: translateY(7px);
+}
+.hamburger-bottom{
+    transform: translateY(14px);
+}
+.open{
+    transform: rotate(90deg);
+    transform: translateY(0px);
+}
+
+.open .hamburger-top {
+    transform: rotate(45deg) translateY(6px) translate(6px);
+}
+.open .hamburger-middle{
+    display: none;
+}
+.open .hamburger-bottom {
+    transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
 
 
 .nav-links ul li {
@@ -570,6 +625,7 @@ footer{
     justify-content: center;
     align-items: center;
 }
+
 .mainApp{
     display: flex;
     flex-direction: column;
@@ -588,6 +644,21 @@ footer{
 }
 .dropAreaContent{
     font-size: 1rem;
+}
+.fileBlock{
+    width: 80px;
+    height: 80px;
+    font-size: .7rem;
+    margin: 0 2px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    border: 1px solid rgb(192, 192, 192);
+
+}
+.fileBlock img{
+    width: 80px;
+    height: 80px;
 }
 .sideBlock{
     margin-top: -69px;
