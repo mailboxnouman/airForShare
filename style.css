@@ -28,6 +28,9 @@ body{
     margin: 0 auto;
     z-index: 1;
 }
+nav button{
+    display: none;
+}
 .menu {
     display: none;
 }
