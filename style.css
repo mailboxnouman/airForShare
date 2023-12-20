@@ -702,6 +702,16 @@ nav button{
     width: 80px;
     height: 80px;
 }
+.fileBlock:not(:has(img)) {
+    background: url("./file-icon.png");
+    background-size: 80px 80px;
+
+}
+
+.fileBlock:has(img) {
+    background: transparent;
+}
+
 .sideBlock{
     margin-top: -69px;
     width: 90vw;
