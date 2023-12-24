@@ -305,6 +305,7 @@ function saveAndFilter() {
 function displayAndStorage() {
     clearText();
     clearStorageText();
+    clearLink()
 }
 
 document.getElementById('textData').value = localStorage.getItem('savedText') || '';
@@ -357,6 +358,15 @@ function saveText() {
 
 
 
+
+function clearLink() {
+    var linkUl = document.getElementById('links');
+    
+    while (linkUl.firstChild) {
+        linkUl.removeChild(linkUl.firstChild);
+    }
+
+}
 
 function clearStorageText() {
     localStorage.removeItem('savedText');
